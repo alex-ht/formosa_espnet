@@ -33,8 +33,7 @@ for x in $corpus/*/Wav/*/*/*.wav; do
   echo "$key $key" >> data/all/utt2spk
   echo "$key $x"   >> data/all/wav.scp
   txt_path=$(echo $x |  sed 's:Wav:Text:g' |  sed 's:.wav:.txt:g')
-  sed '1s/^\uFEFF//' $txt_path | \
-    uconv -x any-nfc | dos2unix | \
+  cat $txt_path | sed '1s/^\xEF\xBB\xBF//' | dos2unix | LC_ALL="zh_TW.UTF-8" uconv -x any-nfc | \
     awk -v key=$key '{print key " " $n}' >> data/all/text
 done
 utils/fix_data_dir.sh data/all
