@@ -1,3 +1,3 @@
-# fsw-system
+# fsr-system
 
-* asr1: 參加FSW2018競賽的系統，採用espnet, kaldi的平台。
+* asr1: 參加FSR2018競賽的系統，採用espnet, kaldi的平台。
