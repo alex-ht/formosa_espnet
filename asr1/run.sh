@@ -52,12 +52,13 @@ lm_resume=        # specify a snapshot file to resume LM training
 lmtag="a"         # tag for managing LMs
 
 # decoding parameter
+gpu_res="--gpu 1"
 lm_weight=1.0
-beam_size=5
+beam_size=20
 penalty=0.0
 maxlenratio=0.0
 minlenratio=0.0
-ctc_weight=0.5
+ctc_weight=0.0
 recog_model=model.acc.best # set a model to be used for decoding: 'model.acc.best' or 'model.loss.best'
 
 # scheduled sampling option
@@ -196,9 +197,9 @@ if [ ${stage} -le 4 ]; then
         # split data
         splitjson.py --parts ${nj} ${feat_recog_dir}/data.json
 
-        ${decode_cmd} JOB=1:${nj} ${expdir}/${decode_dir}/log/decode.JOB.log \
+        ${decode_cmd} $gpu_res JOB=1:${nj} ${expdir}/${decode_dir}/log/decode.JOB.log \
             asr_recog.py \
-            --ngpu 0 \
+            --ngpu ${ngpu} \
             --backend ${backend} \
             --debugmode 0 \
             --verbose 1 \
@@ -224,7 +225,8 @@ if [ ${stage} -le 5 ]; then
     mkdir -p ${lmdatadir}
     text2token.py -s 1 -n 1 -l ${nlsyms} --space '' data/${train_set}/text | cut -f 2- -d" " \
         > ${lmdatadir}/train.txt
-    cat lm_data/CLMAD/train/*.train | cconv -f UTF8 -t UTF8-TW > ${lmdatadir}/clmad.txt \
+    cat lm_data/CLMAD/train/*.train | \
+      LC_ALL="zh_TW.UTF-8" cconv -f UTF8 -t UTF8-TW > ${lmdatadir}/clmad.txt
     text2token.py -s 1 -n 1 -l ${nlsyms} --space '' ${lmdatadir}/clmad.txt \
         >> ${lmdatadir}/train.txt
     text2token.py -s 1 -n 1 -l ${nlsyms} --space '' data/${train_dev}/text | cut -f 2- -d" " \
@@ -263,7 +265,7 @@ if [ ${stage} -le 6 ]; then
 
         recog_opts="--rnnlm ${lmexpdir}/rnnlm.model.best"
 
-        ${decode_cmd} JOB=1:${nj} ${expdir}/${decode_dir}/log/decode.JOB.log \
+        ${decode_cmd} $gpu_res JOB=1:${nj} ${expdir}/${decode_dir}/log/decode.JOB.log \
             asr_recog.py \
             --ngpu ${ngpu} \
             --backend ${backend} \
