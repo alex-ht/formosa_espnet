@@ -1,0 +1,71 @@
+# ./local/run_mfcc40.sh --stage 1 
+# Started at 四 11月 15 12:56:31 UTC 2018
+#
+stage 1: Feature Generation
+compute-cmvn-stats scp:data/mfcc40_pitch/tr99_sp/feats.scp data/mfcc40_pitch/tr99_sp/cmvn.ark 
+LOG (compute-cmvn-stats[5.5.16~1410-03355]:main():compute-cmvn-stats.cc:168) Wrote global CMVN stats to data/mfcc40_pitch/tr99_sp/cmvn.ark
+LOG (compute-cmvn-stats[5.5.16~1410-03355]:main():compute-cmvn-stats.cc:171) Done accumulating CMVN stats for 56364 utterances; 0 had errors.
+dictionary: data/lang_1char/tr99_sp_units.txt
+make json files
+sym2int.pl: replacing 琢 with 1
+sym2int.pl: replacing 燠 with 1
+sym2int.pl: replacing 瞠 with 1
+sym2int.pl: replacing 芷 with 1
+sym2int.pl: replacing 芯 with 1
+sym2int.pl: replacing 菱 with 1
+sym2int.pl: replacing 牒 with 1
+sym2int.pl: replacing 囑 with 1
+sym2int.pl: replacing 榴 with 1
+** Replaced 9 instances of OOVs with 1
+sym2int.pl: replacing 栢 with 1
+sym2int.pl: replacing 鞏 with 1
+sym2int.pl: replacing 麒 with 1
+sym2int.pl: replacing 稠 with 1
+sym2int.pl: replacing 棠 with 1
+sym2int.pl: replacing 棠 with 1
+sym2int.pl: replacing 棠 with 1
+sym2int.pl: replacing 撻 with 1
+sym2int.pl: replacing 酋 with 1
+sym2int.pl: replacing 闕 with 1
+sym2int.pl: replacing 羯 with 1
+sym2int.pl: replacing 苟 with 1
+sym2int.pl: replacing 棠 with 1
+sym2int.pl: replacing 棠 with 1
+sym2int.pl: replacing 棠 with 1
+sym2int.pl: replacing 摟 with 1
+sym2int.pl: replacing 摟 with 1
+sym2int.pl: replacing 摟 with 1
+sym2int.pl: replacing 駿 with 1
+sym2int.pl: replacing 駿 with 1
+sym2int.pl: not warning for OOVs any more times
+** Replaced 171 instances of OOVs with 1
+stage 3: Network Training
+stage 4: Decoding
+2018-11-17 11:57:36,801 (splitjson:41) INFO: number of utterances = 2112
+2018-11-17 12:50:30,779 (concatjson:28) INFO: new json has 2112 utterances
+2018-11-17 12:50:30,990 (json2trn:22) INFO: reading exp/tr99_sp_pytorch_b/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/data.json
+2018-11-17 12:50:31,046 (json2trn:26) INFO: reading data/lang_1char/tr99_sp_units.txt
+2018-11-17 12:50:31,072 (json2trn:34) INFO: writing hyp trn to exp/tr99_sp_pytorch_b/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/hyp.trn
+2018-11-17 12:50:31,072 (json2trn:35) INFO: writing ref trn to exp/tr99_sp_pytorch_b/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/ref.trn
+write a CER (or TER) result in exp/tr99_sp_pytorch_b/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
+| SPKR             | # Snt  # Wrd | Corr     Sub     Del     Ins    Err   S.Err  |
+| Sum/Avg          | 2112   349578| 83.0    10.7     6.2     6.4   23.4    99.9  |
+write a WER result in exp/tr99_sp_pytorch_b/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.wrd.txt
+| SPKR             | # Snt   # Wrd  | Corr     Sub     Del      Ins     Err   S.Err  |
+| Sum/Avg          | 2112    135972 | 72.3    21.8     6.0      8.7    36.4    99.9  |
+stage 6: Decoding
+2018-11-17 12:50:46,445 (splitjson:41) INFO: number of utterances = 2112
+2018-11-17 13:46:22,293 (concatjson:28) INFO: new json has 2112 utterances
+2018-11-17 13:46:22,505 (json2trn:22) INFO: reading exp/tr99_sp_pytorch_b/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/data.json
+2018-11-17 13:46:22,561 (json2trn:26) INFO: reading data/lang_1char/tr99_sp_units.txt
+2018-11-17 13:46:22,565 (json2trn:34) INFO: writing hyp trn to exp/tr99_sp_pytorch_b/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/hyp.trn
+2018-11-17 13:46:22,565 (json2trn:35) INFO: writing ref trn to exp/tr99_sp_pytorch_b/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/ref.trn
+write a CER (or TER) result in exp/tr99_sp_pytorch_b/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
+| SPKR             |  # Snt  # Wrd  |  Corr     Sub      Del     Ins      Err   S.Err  |
+| Sum/Avg          |  2112   349578 |  81.8    10.8      7.4     6.1     24.3   100.0  |
+write a WER result in exp/tr99_sp_pytorch_b/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.wrd.txt
+|  SPKR             |  # Snt   # Wrd  |  Corr     Sub      Del      Ins      Err    S.Err  |
+|  Sum/Avg          |  2112    135972 |  70.9    21.5      7.7      6.9     36.0    100.0  |
+Finished
+# Accounting: time=175806 threads=1
+# Ended (code 0) at 六 11月 17 13:46:37 UTC 2018, elapsed time 175806 seconds

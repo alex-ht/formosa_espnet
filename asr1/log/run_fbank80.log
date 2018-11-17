@@ -1,0 +1,33 @@
+# ./local/run_fbank80.sh --stage 4 
+# Started **************
+#
+dictionary: data/lang_1char/tr99_sp_units.txt
+stage 4: Decoding
+2018-11-16 14:57:28,465 (splitjson:41) INFO: number of utterances = 2112
+2018-11-16 18:23:31,009 (concatjson:28) INFO: new json has 2112 utterances
+2018-11-16 18:23:31,256 (json2trn:22) INFO: reading exp/tr99_sp_pytorch_c/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/data.json
+2018-11-16 18:23:31,331 (json2trn:26) INFO: reading data/lang_1char/tr99_sp_units.txt
+2018-11-16 18:23:31,352 (json2trn:34) INFO: writing hyp trn to exp/tr99_sp_pytorch_c/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/hyp.trn
+2018-11-16 18:23:31,353 (json2trn:35) INFO: writing ref trn to exp/tr99_sp_pytorch_c/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/ref.trn
+write a CER (or TER) result in exp/tr99_sp_pytorch_c/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
+| SPKR             | # Snt  # Wrd | Corr     Sub     Del     Ins    Err   S.Err  |
+| Sum/Avg          | 2112   349578| 83.3    10.1     6.6     5.2   21.9    99.8  |
+write a WER result in exp/tr99_sp_pytorch_c/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.wrd.txt
+| SPKR             | # Snt   # Wrd  | Corr     Sub     Del      Ins     Err   S.Err  |
+| Sum/Avg          | 2112    135972 | 72.9    20.8     6.4      6.8    34.0    99.8  |
+stage 6: Decoding
+2018-11-16 18:23:49,265 (splitjson:41) INFO: number of utterances = 2112
+2018-11-16 22:14:46,333 (concatjson:28) INFO: new json has 2112 utterances
+2018-11-16 22:14:46,556 (json2trn:22) INFO: reading exp/tr99_sp_pytorch_c/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/data.json
+2018-11-16 22:14:46,615 (json2trn:26) INFO: reading data/lang_1char/tr99_sp_units.txt
+2018-11-16 22:14:46,637 (json2trn:34) INFO: writing hyp trn to exp/tr99_sp_pytorch_c/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/hyp.trn
+2018-11-16 22:14:46,638 (json2trn:35) INFO: writing ref trn to exp/tr99_sp_pytorch_c/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/ref.trn
+write a CER (or TER) result in exp/tr99_sp_pytorch_c/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
+| SPKR             |  # Snt  # Wrd  |  Corr     Sub      Del     Ins      Err   S.Err  |
+| Sum/Avg          |  2112   349578 |  82.5    10.2      7.3     5.2     22.7    99.8  |
+write a WER result in exp/tr99_sp_pytorch_c/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.wrd.txt
+|  SPKR             |  # Snt   # Wrd  |  Corr     Sub      Del      Ins      Err    S.Err  |
+|  Sum/Avg          |  2112    135972 |  71.8    20.6      7.6      5.8     34.1     99.8  |
+Finished
+# Accounting: time******************
+# Ended (code 0) at 五 11月 16 22:15:04 UTC 2018, elapsed time 26256 seconds
