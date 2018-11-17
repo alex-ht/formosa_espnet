@@ -1,14 +1,9 @@
-# Date: Wed Nov 14 11:35:47 CST 2018
-# exp/tr99_sp_pytorch_a/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0
-| SPKR             | # Snt  # Char| Corr     Sub     Del     Ins    Err   S.Err  |
-|------------------+--------------+----------------------------------------------|
-| Sum/Avg          | 2112   349578| 81.8    11.7     6.5     5.6   23.9    99.9  |
-| Sum              | 2112  349578 |285895   40882  22801   19713   83396   2110  |
-
-# RNNLM (CLMAD)
-# exp/tr99_sp_pytorch_a/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0
-| SPKR             |  # Snt  # Char |  Corr     Sub      Del     Ins      Err   S.Err  |
-|------------------+----------------+--------------------------------------------------|
+# Sat Nov 17 02:33:49 UTC 2018
+exp/tr99_sp_pytorch_a/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
 | Sum/Avg          |  2112   349578 |  80.9    11.8      7.3     5.3     24.3    99.9  |
-| Sum              |  2112   349578 |282922    41108   25548   18452    85108    2110  |
-# END
+exp/tr99_sp_pytorch_a/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
+| Sum/Avg          | 2112   349578| 81.8    11.7     6.5     5.6   23.9    99.9  |
+exp/tr99_sp_pytorch_c/decode_rnnlm_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
+| Sum/Avg          |  2112   349578 |  82.5    10.2      7.3     5.2     22.7    99.8  |
+exp/tr99_sp_pytorch_c/decode_test_beam20_emodel.acc.best_p0.0_len0.0-0.0/result.txt
+| Sum/Avg          | 2112   349578| 83.3    10.1     6.6     5.2   21.9    99.8  |
