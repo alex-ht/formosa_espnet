@@ -13,4 +13,4 @@
 
 參考指令
 
-`apt-get install cconv unoconv language-pack-zh-hant`
+`apt-get install cconv libicu-dev language-pack-zh-hant`
